@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class customer(models.Model):
     LIVE=1
@@ -8,9 +9,9 @@ class customer(models.Model):
     address=models.TextField()
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='customer_profile')
     phone=models.CharField(max_length=10)
-    delete_status=models.IntegerField(choices=DELETE_CHOICES,delete)
-    create_at=models.DateTimeField(auto_now_add=true)
-    updated_at=models.DataTimeField(auto_now=true)
+    delete_status=models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
+    create_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
     
 
     def __str__(self) -> str:
